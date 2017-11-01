@@ -365,6 +365,7 @@ void insertarPalPos(int pos, Cadena palabraInsertar, Texto l){
 	Palabra nodo= new palabra;
 	nodo->info=palabraInsertar;
 	nodo->numPalabra=pos;
+	nodo->palCorrecta=false;
 	if (pos >= MAX_CANT_PALABRAS_X_LINEA){
 		Palabra auxp=l->pal;
 		while(auxp->sig!=NULL)
