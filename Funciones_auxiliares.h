@@ -34,6 +34,7 @@ void disminuirNumSigLineas(Texto l);
 void aumentarNumSigPalabras(Palabra l);
 void disminuirNumSigPalabras(Palabra l);
 void imprimirPalabras(Texto l);
+void imprimirPalabrasIncorrectas(Texto l);
 void borrarPalLinea(Texto L);
 void insertarPalPrimerEspacioDisponible(Palabra nodo);
 bool isFull(Texto l);
@@ -45,5 +46,7 @@ bool hayMasPalabras(Texto L);
 void imprimirLetras(Diccionario D);
 void insertarHistorial(Cadena p);
 void moverHaciaDelante(Historial h);
+bool buscarPalabraEnDiccionario(Cadena pal);
+void chiquearPalabrasCorrectas();
 
 #endif

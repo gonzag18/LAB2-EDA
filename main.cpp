@@ -404,6 +404,7 @@ main(){
 				printf("%c", 205);
 			printf("%c\n",188);
 			cout << endl;
+			chiquearPalabrasCorrectas();
 			ImprimirTextoIncorrecto();
 			cout << endl;
 			cout << infoRetorno << endl << "-----------------------------------------------------\n       ";

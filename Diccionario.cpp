@@ -24,7 +24,21 @@ TipoRetorno ImprimirDiccionario(){
 }
 
 TipoRetorno ImprimirTextoIncorrecto(){
-	return NO_IMPLEMENTADA;
+	if(L->sig==NULL){
+		cout << " Texto vacio" << endl;
+		infoRetorno= " Operacion realizada con exito";
+		return OK;
+	}
+	else{
+		Texto aux=L;
+		while(aux->sig!=NULL){
+			cout << " " << aux->sig->numLinea << ": ";
+			imprimirPalabrasIncorrectas(aux->sig);
+			aux=aux->sig;
+		}
+		infoRetorno= " Operacion realizada con exito";
+		return OK;
+	}
 }
 
 TipoRetorno ImprimirUltimasPalabras(){

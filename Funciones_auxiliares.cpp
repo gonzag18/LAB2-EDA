@@ -335,6 +335,16 @@ void imprimirPalabras(Texto l){
 	cout << endl;
 }
 
+void imprimirPalabrasIncorrectas(Texto l){
+	Palabra aux= l->pal;
+	while(aux->sig!=NULL){
+		if(!aux->sig->palCorrecta)
+			cout << aux->sig->info << " ";
+		aux=aux->sig;
+	}
+	cout << endl;
+}
+
 void borrarPalLinea(Texto L){
 	while(L->pal->sig != NULL){
 		Palabra borrar= L->pal->sig;
@@ -437,5 +447,43 @@ void moverHaciaDelante(Historial h){
 	if(h!=NULL && h->sig!=NULL){
 		moverHaciaDelante(h->sig);
 		h->pal=h->sig->pal;
+	}
+}
+
+bool buscarPalabraEnDiccionario(Cadena pal){
+	Cadena letra;
+	letra[0]=pal[0];
+	letra[1]='\n';
+	Diccionario aux=d;
+	bool encontroLetra=false;
+	while(aux->hijo!=NULL){ // Busca si existe la primera letra en el diccionario (hijos)
+		if(aux->hijo->pal == letra){
+			encontroLetra=true;
+			break;
+		}
+		aux=aux->hijo;
+	}
+	if(!encontroLetra) // Si no lo encontro, ya se sabe que da false
+		return false;
+		
+	Diccionario encontrar= aux->hijo;
+	while(encontrar->sigHer!=NULL){ // Busca en el diccionario la palabra
+		if(encontrar->sigHer->pal == pal)
+			return true;
+		encontrar=encontrar->sigHer;
+	}
+	return false;
+}
+
+void chiquearPalabrasCorrectas(){
+	Texto t=L;
+	Palabra aux;
+	while(t->sig!=NULL){ // Recorre lineas
+		aux=t->sig->pal;
+		while(aux->sig!=NULL){ // Recorre las palabras de la linea
+			aux->sig->palCorrecta= buscarPalabraEnDiccionario(aux->sig->info);
+			aux=aux->sig;
+		}
+		t=t->sig;
 	}
 }

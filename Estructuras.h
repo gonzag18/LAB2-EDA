@@ -18,6 +18,7 @@ using namespace std;
 
 struct palabra{
 	int numPalabra;
+	bool palCorrecta;
 	Cadena info;
 	palabra* sig;
 };
