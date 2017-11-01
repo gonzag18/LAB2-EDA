@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     do {
 
 
-    printf("Estructuras de Datos y Algoritmos - Obligatorio 1\n");
+    printf("Estructuras de Datos y Algoritmos - Obligatorio 2\n");
     printf("### PROCESADOR DE TEXTOS ###\n\n");
 
     printf("Lista de operaciones disponibles:\n");
@@ -65,7 +65,12 @@ int main(int argc, char *argv[])
     printf("9)  BorrarPalabra\n");
     printf("10) BorrarOcurrenciasPalabraEnLinea\n");
     printf("11) ImprimirLinea\n");
-    printf("12) Salir\n\n");
+    printf("12) IngresarPalabraDiccionario\n");
+    printf("13) BorrarPalabraDiccionario\n");
+    printf("14) ImprimirDiccionario\n");
+    printf("15) ImprimirTextoIncorrecto\n");
+    printf("16) ImprimirUltimasPalabras\n");
+    printf("17) Salir\n\n");
 
     printf("Ingrese el numero de la operacion a realizar: ");
     fflush(stdin);
@@ -145,9 +150,40 @@ int main(int argc, char *argv[])
                   retorno =  ImprimirLinea(posicionLinea);
                   imprimirResultado(retorno);
                   break;
-           case 12:
-                  salir = true;
-                  break;
+          case 12:
+                 printf("Ingrese la palabra que desea agregar al diccionario: ");
+                 palabraAux = new char [MAX_LARGO_PALABRA];
+                 cin >> palabraAux;
+                 retorno = IngresarPalabraDiccionario(D,palabraAux);
+                 imprimirResultado(retorno);
+                 break;
+          case 13:
+                 printf("Ingrese la palabra que desea borrar del diccionario: ");
+                 palabraAux = new char [MAX_LARGO_PALABRA];
+                 cin >> palabraAux;
+                 retorno = BorrarPalabraDiccionario(D, palabraAux);
+                 imprimirResultado(retorno);
+                 break;
+          case 14:
+                 retorno =  ImprimirDiccionario(D);
+                 imprimirResultado(retorno);
+                 break;
+          case 15:
+                 retorno =  ImprimirTextoIncorrecto(texto, D);
+                 imprimirResultado(retorno);
+                 break;
+          case 16:
+                 retorno =  ImprimirUltimasPalabras(texto);
+                 imprimirResultado(retorno);
+                 break;
+          case 17:
+                 printf("Esta seguro de que desea salir (s/n)?: ");
+                 cin >> opcion;
+                 if (opcion == 's' || opcion == 'S'){
+                    printf("Saliendo...\n");
+                    salir = true;
+                 }
+                 break;
            default:
                    printf("No ingreso una opcion valida, vuelva a intentarlo...\n");
            }
