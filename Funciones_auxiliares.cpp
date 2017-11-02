@@ -452,13 +452,15 @@ void moverHaciaDelante(Historial h){
 }
 
 bool buscarPalabraEnDiccionario(Cadena pal){
-	Cadena letra;
-	letra[0]=pal[0];
-	letra[1]='\n';
+	Cadena respPal= pal;
+	char letra;
+	letra=respPal[0];
 	Diccionario aux=d;
+	char letraDic;
 	bool encontroLetra=false;
 	while(aux->hijo!=NULL){ // Busca si existe la primera letra en el diccionario (hijos)
-		if(aux->hijo->pal == letra){
+		letraDic= aux->hijo->pal[0];
+		if(letraDic == letra){
 			encontroLetra=true;
 			break;
 		}
@@ -466,10 +468,10 @@ bool buscarPalabraEnDiccionario(Cadena pal){
 	}
 	if(!encontroLetra) // Si no lo encontro, ya se sabe que da false
 		return false;
-		
 	Diccionario encontrar= aux->hijo;
 	while(encontrar->sigHer!=NULL){ // Busca en el diccionario la palabra
-		if(encontrar->sigHer->pal == pal)
+	//	if(encontrar->sigHer->pal == pal)
+		if(! strcmp(encontrar->sigHer->pal,pal) )
 			return true;
 		encontrar=encontrar->sigHer;
 	}

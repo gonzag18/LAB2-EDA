@@ -19,17 +19,6 @@ using namespace std;
 #include "Diccionario.h"
 #include "Var_globales.h"
 
-/* HOW TO SACAR PRIMERA LETRA
-	Cadena arg= new char[10];
-	cin>>arg;
-	Cadena arg2;
-	arg2[0]= arg[0];
-	arg2[1]= '\0';
-	cout << "arg1 es" << arg << " y arg2 es " << arg2 << endl;
-	system("pause");
-*/
-
-
 main(){
 //	intro();
 	Cadena comando = new char(10);
