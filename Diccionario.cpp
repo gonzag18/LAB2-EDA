@@ -1,11 +1,68 @@
 #include "Diccionario.h"
 
 TipoRetorno IngresarPalabraDiccionario(Cadena palabraAIngresar){
-	return NO_IMPLEMENTADA;
+	Diccionario D= aux;
+	Cadena pal= new char[30];
+	pal=palabraAIngresar;
+	Cadena pal2;
+	pal2[0]=pal[0];
+	pal2[1]='\0';
+	while(aux->hijo != NULL && aux->hijo->letra < pal2[0])
+		aux=aux->hijo;
+	if(aux->hijo == NULL)
+		return ERROR;
+	while(aux->sigHer != NULL && aux->sigHer->pal < palabraAIngresar)
+		aux=aux->sigHer;
+	if(aux->sigHer == NULL){
+		Diccionario nuevo;
+		nuevo->pal= palabraAIngresar;
+		nuevo->sigHer=NULL;
+		nuevo->hijo=NULL;
+		aux->sigHer = nuevo;
+		return OK;
+	}
+	else if(aux->sigHer->pal > palabraAIngresar){
+		Diccionario nuevo;
+		nuevo->pal=palabraAIngresar;
+		nuevo->sigHer=aux->sigHer;
+		nuevo->hijo=NULL;
+		aux->sigHer=nuevo;
+		return OK;
+	}
+	else if(aux->sigHer->pal == palabraAIngresar)
+		return ERROR;
 }
 
 TipoRetorno BorrarPalabraDiccionario(Cadena palabraABorrar){
-	return NO_IMPLEMENTADA;
+	Diccionario D= aux;
+	Cadena pal= new char[30];
+	pal=palabraABorrar;
+	Cadena pal2;
+	pal2[0]=pal[0];
+	pal2[1]='\0';
+	while(aux->hijo != NULL && aux->hijo->letra < pal2[0])
+		aux=aux->hijo;
+	if(aux->hijo == NULL)
+		return ERROR;
+	while(aux->sigHer != NULL && aux->sigHer->pal != palabraABorrar)
+		D=D->sigHer;
+	if(aux->sigher->pal == palabraABorrar){
+		Diccionario borrar = aux->sigHer;
+		if(aux->sigHer!=NULL){
+			aux->sigHer=borrar->sigHer;
+			delete borrar;
+			borrar=NULL;
+			return OK;
+		}
+		else{
+			aux->sigHer=NULL;
+			delete borrar;
+			borrar=NULL;
+			return OK;
+		}
+	}
+	if(aux->sigHer==NULL)
+		return ERROR;
 }
 
 TipoRetorno ImprimirDiccionario(){
